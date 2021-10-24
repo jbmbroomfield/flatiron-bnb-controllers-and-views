@@ -1,0 +1,6 @@
+<h1><%= @listing.title %></h1>
+<p>Location: <%= @listing.neighborhood.name %>, <%=@listing.neighborhood.city.name %></p>
+<p>Address: <%= @listing.address %></p>
+<p>Host: <%= link_to @listing.host.name, @listing.host %></p>
+<p>Description: <%= @listing.description %></p>
+<p>Price: $<%= @listing.price %></p>

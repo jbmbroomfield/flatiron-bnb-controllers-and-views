@@ -1,0 +1,16 @@
+<h1><%= @city.name %></h1>
+
+<h2>Neighborhoods</h2>
+<% @city.neighborhoods.each do |neighborhood| %>
+    <h3><%= link_to neighborhood.name, neighborhood %></h3>
+    <h4>Listings</h4>
+    <ul>
+        <% neighborhood.listings.each do |listing| %>
+            <li><%= link_to listing.address, listing_path(city_id: @city.id, neighborhood_id: neighborhood.id, id: listing.id) %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<p><%= link_to 'Edit City', edit_city_path(@city) %></p>
+
+<p><%= link_to 'Cities', City %></p>

@@ -1,0 +1,6 @@
+<h1>Neighborhoods</h1>
+
+<% @neighborhoods.each do |neighborhood| %>
+    <h3><%= link_to neighborhood, neighborhood %></h3>
+    <p>City: <%= link_to neighborhood.city, neighborhood.city %></p>
+<% end %>

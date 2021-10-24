@@ -1,0 +1,7 @@
+<% City.all.each do |city| %>
+    <p><%= link_to city.name, city %></p>
+<% end %>
+
+<br>
+
+<p><%= link_to 'New City', new_city_path %></p>

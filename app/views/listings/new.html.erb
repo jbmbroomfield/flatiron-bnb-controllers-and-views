@@ -1,0 +1,42 @@
+<h1>New Listing in <%= @neighborhood.name %>, <%= @neighborhood.city.name %></h1>
+
+<% if @listing.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@listing.errors.count, "error") %>
+            prohibited this post from being saved:
+        </h2>
+
+        <ul>
+            <% @listing.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_for @listing do |f| %>
+
+    <%= f.hidden_field :neighborhood_id, value: @neighborhood.id %>
+
+    <label>Title</label><br>
+    <%= f.text_field :title %></br>
+
+    <label>Address</label><br>
+    <%= f.text_field :address %><br>
+
+    <label>Listing Type</label><br>
+    <%= f.text_field :listing_type %><br>
+
+    <label>Description</label><br>
+    <%= f.text_area :description %><br>
+
+    <label>Price</label><br>
+    <%= f.number_field :price, min: 0.0, step: 0.01 %><br>
+
+    <label>Host</label><br>
+    <%= f.collection_select :host_id, User.all, :id, :name %>
+    
+    <%= f.submit %>
+
+<% end %>

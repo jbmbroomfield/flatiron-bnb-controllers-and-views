@@ -1,0 +1,29 @@
+<h1>New <%= @city.name %> Neighborhood</h1>
+
+<% if @neighborhood.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@neighborhood.errors.count, "error") %>
+            prohibited this post from being saved:
+        </h2>
+
+        <ul>
+            <% @neighborhood.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_for @neighborhood do |f| %>
+
+    <%= f.hidden_field :city_id, value: @city.id %>
+
+    <label>Name</label><br>
+    <%= f.text_field :name %><br>
+    
+    <%= f.submit %>
+
+<% end %>
+
+  
